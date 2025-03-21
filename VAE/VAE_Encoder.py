@@ -47,7 +47,7 @@ class Encoder(nn.Sequential):
     
     def forward(self, x: torch.Tensor, noise: torch.Tensor) -> torch.Tensor:
         # x: (Batch, Channel, Height, Width)
-        # noise: (Batch, Channel, Height/8, Width/8)
+        # noise: (Batch, 4, Height/8, Width/8)
        
         for module in self:
             if getattr(module, "stride", None) == (2, 2):
@@ -63,6 +63,7 @@ class Encoder(nn.Sequential):
         
         stdev = torch.sqrt(variance)
         
+        # (4, Height/8, Width/8)
         x = mean + stdev * noise
         
         x *= 0.18125
