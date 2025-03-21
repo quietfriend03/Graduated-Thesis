@@ -7,12 +7,14 @@ class AttentionBlock(nn.Module):
     def __init__(self, channels: int):
         super().__init__()
         self.group_norm = nn.GroupNorm(32, channels)
-        self.attention = SelfAttention(channels)
+        self.attention = SelfAttention(1, channels)
         
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # x: (Batch, Features, Height, Width)
         residual = x
         
+        x = self.group_norm(x)
+
         batch, features, height, width = x.shape
         
         # (Batch, Features, Height, Width) => (Batch, Features, Height * Width)
