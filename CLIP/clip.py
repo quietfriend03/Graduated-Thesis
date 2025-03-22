@@ -3,6 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 from attention import SelfAttention
 from clip_embedding import CLIPTextEmbedding
+from clip_layer import CLIPLayer
 
 class CLIP(nn.Module):
     def __init__(self):
