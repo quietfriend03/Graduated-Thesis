@@ -10,12 +10,12 @@ class TimeEmbedding(nn.Module):
         
         
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        # x : (1, 360)
+        # x : (1, 320)
         x = self.linear_1(x)
         
         x = F.silu(x)
         
         x = self.linear_2(x)
         
-        # (1, 1440)
+        # (1, 1280)
         return x

@@ -1,12 +1,15 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from time_embedding import TimeEmbedding
+from unet_layer import UnetOutputLayer
+from unet import UNET
 
 class Diffusion(nn.Module):
     def __init__(self):
-        self.time_embedding = TimeEmbedding(360)
+        self.time_embedding = TimeEmbedding(320)
         self.unet = UNET()
-        self.output = UNET_OutputLayer(360, 4)
+        self.output = UnetOutputLayer(320, 4)
         
     def forward(self, latent: torch.Tensor, text: torch.Tensor, time: torch.Tensor):
         # LATENT EMBEDDING (4, Height/8, Width/8) 
