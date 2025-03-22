@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from module.attention_block import AttentionBlock
-from module.residual_block import ResidualBlock
+from attention_block import AttentionBlock
+from residual_block import ResidualBlock
 
 class Encoder(nn.Sequential):
     def __init__(self):
