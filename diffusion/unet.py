@@ -4,12 +4,12 @@ import torch.nn.functional as F
 from unet_attention_block import UnetAttentionBlock
 from unet_residual_block import UnetResidualBlock
 class SwitchSequential(nn.Sequential):
-    def forward(self, x: torch.Tensor, text: torch.Tensor, time: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, context: torch.Tensor, time: torch.Tensor) -> torch.Tensor:
         for layer in self:
             if isinstance(layer, UnetResidualBlock):
                 x = layer(x, time)
             elif isinstance(layer, UnetAttentionBlock):
-                x = layer(x, text)
+                x = layer(x, context)
             else:
                 x = layer(x)
         return x

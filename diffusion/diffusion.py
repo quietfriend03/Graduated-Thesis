@@ -11,7 +11,7 @@ class Diffusion(nn.Module):
         self.unet = UNET()
         self.output = UnetOutputLayer(320, 4)
         
-    def forward(self, latent: torch.Tensor, text: torch.Tensor, time: torch.Tensor):
+    def forward(self, latent: torch.Tensor, context: torch.Tensor, time: torch.Tensor):
         # LATENT EMBEDDING (4, Height/8, Width/8) 
         # TIME EMBEDDING (1, 360)
         
@@ -19,7 +19,7 @@ class Diffusion(nn.Module):
         time = self.time_embedding(time)
         
         # (4, Height/8, Width/8) => (360, Height/8, Width/8)
-        output = self.unet(latent, text, time)
+        output = self.unet(latent, context, time)
         
         output = self.output(output)
         
