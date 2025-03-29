@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm
-from DDPM import DDPMSampler
+from ddpm import DDPMSampler
 import numpy as np
 
 WIDTH = 512

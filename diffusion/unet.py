@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from unet_attention_block import UnetAttentionBlock
-from unet_residual_block import UnetResidualBlock
+from diffusion.unet_attention_block import UnetAttentionBlock
+from diffusion.unet_residual_block import UnetResidualBlock
 class SwitchSequential(nn.Sequential):
     def forward(self, x: torch.Tensor, context: torch.Tensor, time: torch.Tensor) -> torch.Tensor:
         for layer in self:

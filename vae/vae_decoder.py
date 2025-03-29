@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import attention as SelfAttention
-from attention_block import AttentionBlock
-from residual_block import ResidualBlock
+from vae.attention_block import AttentionBlock
+from vae.residual_block import ResidualBlock
 
 
 class Decoder(nn.Sequential):

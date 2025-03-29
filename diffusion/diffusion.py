@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from time_embedding import TimeEmbedding
-from unet_layer import UnetOutputLayer
-from unet import UNET
+from diffusion.time_embedding import TimeEmbedding
+from diffusion.unet_layer import UnetOutputLayer
+from diffusion.unet import UNET
 
 class Diffusion(nn.Module):
     def __init__(self):
