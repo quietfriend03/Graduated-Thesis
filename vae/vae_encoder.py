@@ -6,7 +6,7 @@ from vae.residual_block import ResidualBlock
 
 class Encoder(nn.Sequential):
     def __init__(self):
-        super.__init__(
+        super().__init__(
             #(Channel, Height, Width) => (128, Height, Width)
             nn.Conv2d(3, 128, kernel_size=3, padding=1),
             
